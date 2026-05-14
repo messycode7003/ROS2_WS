@@ -1,0 +1,139 @@
+<?xml version="1.0"?>
+<robot name="eight_axis_canopen" xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <xacro:arg name="bus_config" default=""/>
+  <xacro:arg name="master_config" default=""/>
+  <xacro:arg name="can_interface_name" default="can0"/>
+  <xacro:arg name="master_bin" default=""/>
+
+  <material name="gray">
+    <color rgba="0.7 0.7 0.7 1.0"/>
+  </material>
+
+  <xacro:macro name="segment" params="parent child joint_name z">
+    <link name="${child}">
+      <visual>
+        <origin xyz="0 0 0.05" rpy="0 0 0"/>
+        <geometry>
+          <cylinder radius="0.025" length="0.10"/>
+        </geometry>
+        <material name="gray"/>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0.05" rpy="0 0 0"/>
+        <geometry>
+          <cylinder radius="0.025" length="0.10"/>
+        </geometry>
+      </collision>
+      <inertial>
+        <origin xyz="0 0 0.05" rpy="0 0 0"/>
+        <mass value="0.2"/>
+        <inertia ixx="0.0003" ixy="0.0" ixz="0.0" iyy="0.0003" iyz="0.0" izz="0.0001"/>
+      </inertial>
+    </link>
+
+    <joint name="${joint_name}" type="revolute">
+      <parent link="${parent}"/>
+      <child link="${child}"/>
+      <origin xyz="0 0 ${z}" rpy="0 0 0"/>
+      <axis xyz="0 0 1"/>
+      <limit lower="-6.28318530718" upper="6.28318530718" effort="100.0" velocity="3.0"/>
+    </joint>
+  </xacro:macro>
+
+  <link name="base_link">
+    <visual>
+      <origin xyz="0 0 0.025" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.15 0.15 0.05"/>
+      </geometry>
+      <material name="gray"/>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0.025" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.15 0.15 0.05"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="0 0 0.025" rpy="0 0 0"/>
+      <mass value="1.0"/>
+      <inertia ixx="0.002" ixy="0.0" ixz="0.0" iyy="0.002" iyz="0.0" izz="0.002"/>
+    </inertial>
+  </link>
+
+  <xacro:segment parent="base_link" child="link_1" joint_name="joint_1" z="0.05"/>
+  <xacro:segment parent="link_1" child="link_2" joint_name="joint_2" z="0.10"/>
+  <xacro:segment parent="link_2" child="link_3" joint_name="joint_3" z="0.10"/>
+  <xacro:segment parent="link_3" child="link_4" joint_name="joint_4" z="0.10"/>
+  <xacro:segment parent="link_4" child="link_5" joint_name="joint_5" z="0.10"/>
+  <xacro:segment parent="link_5" child="link_6" joint_name="joint_6" z="0.10"/>
+  <xacro:segment parent="link_6" child="link_7" joint_name="joint_7" z="0.10"/>
+  <xacro:segment parent="link_7" child="link_8" joint_name="joint_8" z="0.10"/>
+
+  <ros2_control name="EightAxisCanopenSystem" type="system">
+    <hardware>
+      <plugin>canopen_ros2_control/RobotSystem</plugin>
+      <param name="bus_config">$(arg bus_config)</param>
+      <param name="master_config">$(arg master_config)</param>
+      <param name="can_interface_name">$(arg can_interface_name)</param>
+      <param name="master_bin">$(arg master_bin)</param>
+    </hardware>
+
+    <joint name="joint_1">
+      <param name="device_name">joint_1</param>
+      <command_interface name="position"/>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+    </joint>
+
+    <joint name="joint_2">
+      <param name="device_name">joint_2</param>
+      <command_interface name="position"/>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+    </joint>
+
+    <joint name="joint_3">
+      <param name="device_name">joint_3</param>
+      <command_interface name="position"/>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+    </joint>
+
+    <joint name="joint_4">
+      <param name="device_name">joint_4</param>
+      <command_interface name="position"/>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+    </joint>
+
+    <joint name="joint_5">
+      <param name="device_name">joint_5</param>
+      <command_interface name="position"/>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+    </joint>
+
+    <joint name="joint_6">
+      <param name="device_name">joint_6</param>
+      <command_interface name="position"/>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+    </joint>
+
+    <joint name="joint_7">
+      <param name="device_name">joint_7</param>
+      <command_interface name="position"/>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+    </joint>
+
+    <joint name="joint_8">
+      <param name="device_name">joint_8</param>
+      <command_interface name="position"/>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+    </joint>
+  </ros2_control>
+</robot>
+

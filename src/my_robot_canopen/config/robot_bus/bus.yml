@@ -1,0 +1,664 @@
+options:
+  dcf_path: "@BUS_CONFIG_PATH@"
+
+master:
+  node_id: 9
+  package: "canopen_master_driver"
+  driver: "ros2_canopen::MasterDriver"
+  baudrate: 500
+  heartbeat_consumer: true
+  boot_time: 60000
+  boot_timeout: 60000
+  start: true
+  start_nodes: true
+  start_all_nodes: true
+  sync_period: 20000
+
+joint_1:
+  node_id: 1
+  dcf: "servo_drive.eds"
+  package: "canopen_402_driver"
+  driver: "ros2_canopen::Cia402Driver"
+  boot: true
+  mandatory: true
+  polling: true
+  period: 20
+  non_transmit_timeout: 20000
+  sdo_timeout_ms: 5000
+  boot_timeout_ms: 60000
+  switching_state: 5
+  position_mode: 7
+
+  scale_pos_to_dev: 5242880.0   
+  scale_pos_from_dev: 0.00000019073486328125
+  scale_vel_to_dev: 4369.066666666667
+  scale_vel_from_dev: 0.0002288818359375
+  scale_eff_from_dev: 0.001
+
+  heartbeat_producer: 1000
+  heartbeat_multiplier: 10.0
+
+  sdo:
+    - { index: 0x60C2, sub_index: 1, value: 20 }
+    - { index: 0x60C2, sub_index: 2, value: -3 }
+    - { index: 0x6060, sub_index: 0, value: 7 }
+    - { index: 0x6098, sub_index: 0, value: 35 }
+    - { index: 0x607C, sub_index: 0, value: 0 }
+
+  tpdo:
+    1:
+      enabled: true
+      cob_id: "auto"
+      transmission: 5
+      inhibit_time: 0
+      mapping:
+        - { index: 0x6041, sub_index: 0 }
+        - { index: 0x6061, sub_index: 0 }
+
+    2:
+      enabled: true
+      cob_id: "auto"
+      transmission: 0x01
+      mapping:
+        - { index: 0x6064, sub_index: 0 }
+        - { index: 0x606C, sub_index: 0 }
+
+    3:
+      enabled: true
+      cob_id: "auto"
+      transmission: 0x01
+      mapping:
+        - { index: 0x6077, sub_index: 0 }
+
+    4:
+      enabled: false
+
+  rpdo:
+    1:
+      enabled: true
+      cob_id: "auto"
+      transmission: 0x01
+      mapping:
+        - { index: 0x6040, sub_index: 0 }
+        - { index: 0x6060, sub_index: 0 }
+
+    2:
+      enabled: true
+      cob_id: "auto"
+      transmission: 0x01
+      mapping:
+        - { index: 0x60C1, sub_index: 1 }
+
+    3:
+      enabled: false
+
+    4:
+      enabled: false
+
+joint_2:
+  node_id: 2
+  dcf: "servo_drive.eds"
+  package: "canopen_402_driver"
+  driver: "ros2_canopen::Cia402Driver"
+  boot: true
+  mandatory: true
+  polling: true
+  period: 20
+  non_transmit_timeout: 20000
+  sdo_timeout_ms: 5000
+  boot_timeout_ms: 60000
+  switching_state: 5
+  position_mode: 7
+
+  scale_pos_to_dev: 1.0
+  scale_pos_from_dev: 1.0
+  scale_vel_to_dev: 4369.066666666667
+  scale_vel_from_dev: 0.0002288818359375
+  scale_eff_from_dev: 0.001
+
+  heartbeat_producer: 1000
+  heartbeat_multiplier: 10.0
+
+  sdo:
+    - { index: 0x60C2, sub_index: 1, value: 20 }
+    - { index: 0x60C2, sub_index: 2, value: -3 }
+    - { index: 0x6060, sub_index: 0, value: 7 }
+    - { index: 0x6098, sub_index: 0, value: 35 }
+    - { index: 0x607C, sub_index: 0, value: 0 }
+
+  tpdo:
+    1:
+      enabled: true
+      cob_id: "auto"
+      transmission: 5
+      inhibit_time: 0
+      mapping:
+        - { index: 0x6041, sub_index: 0 }
+        - { index: 0x6061, sub_index: 0 }
+
+    2:
+      enabled: true
+      cob_id: "auto"
+      transmission: 0x01
+      mapping:
+        - { index: 0x6064, sub_index: 0 }
+        - { index: 0x606C, sub_index: 0 }
+
+    3:
+      enabled: true
+      cob_id: "auto"
+      transmission: 0x01
+      mapping:
+        - { index: 0x6077, sub_index: 0 }
+
+    4:
+      enabled: false
+
+  rpdo:
+    1:
+      enabled: true
+      cob_id: "auto"
+      transmission: 0x01
+      mapping:
+        - { index: 0x6040, sub_index: 0 }
+        - { index: 0x6060, sub_index: 0 }
+
+    2:
+      enabled: true
+      cob_id: "auto"
+      transmission: 0x01
+      mapping:
+        - { index: 0x60C1, sub_index: 1 }
+
+    3:
+      enabled: false
+
+    4:
+      enabled: false
+
+joint_3:
+  node_id: 3
+  dcf: "servo_drive.eds"
+  package: "canopen_402_driver"
+  driver: "ros2_canopen::Cia402Driver"
+  boot: true
+  mandatory: true
+  polling: true
+  period: 20
+  non_transmit_timeout: 20000
+  sdo_timeout_ms: 5000
+  boot_timeout_ms: 60000
+  switching_state: 5
+  position_mode: 7
+
+  scale_pos_to_dev: 1.0
+  scale_pos_from_dev: 1.0
+  scale_vel_to_dev: 4369.066666666667
+  scale_vel_from_dev: 0.0002288818359375
+  scale_eff_from_dev: 0.001
+
+  heartbeat_producer: 1000
+  heartbeat_multiplier: 10.0
+
+  sdo:
+    - { index: 0x60C2, sub_index: 1, value: 20 }
+    - { index: 0x60C2, sub_index: 2, value: -3 }
+    - { index: 0x6060, sub_index: 0, value: 7 }
+    - { index: 0x6098, sub_index: 0, value: 35 }
+    - { index: 0x607C, sub_index: 0, value: 0 }
+
+  tpdo:
+    1:
+      enabled: true
+      cob_id: "auto"
+      transmission: 5
+      inhibit_time: 0
+      mapping:
+        - { index: 0x6041, sub_index: 0 }
+        - { index: 0x6061, sub_index: 0 }
+
+    2:
+      enabled: true
+      cob_id: "auto"
+      transmission: 0x01
+      mapping:
+        - { index: 0x6064, sub_index: 0 }
+        - { index: 0x606C, sub_index: 0 }
+
+    3:
+      enabled: true
+      cob_id: "auto"
+      transmission: 0x01
+      mapping:
+        - { index: 0x6077, sub_index: 0 }
+
+    4:
+      enabled: false
+
+  rpdo:
+    1:
+      enabled: true
+      cob_id: "auto"
+      transmission: 0x01
+      mapping:
+        - { index: 0x6040, sub_index: 0 }
+        - { index: 0x6060, sub_index: 0 }
+
+    2:
+      enabled: true
+      cob_id: "auto"
+      transmission: 0x01
+      mapping:
+        - { index: 0x60C1, sub_index: 1 }
+
+    3:
+      enabled: false
+
+    4:
+      enabled: false
+
+joint_4:
+  node_id: 4
+  dcf: "servo_drive.eds"
+  package: "canopen_402_driver"
+  driver: "ros2_canopen::Cia402Driver"
+  boot: true
+  mandatory: true
+  polling: true
+  period: 20
+  non_transmit_timeout: 20000
+  sdo_timeout_ms: 5000
+  boot_timeout_ms: 60000
+  switching_state: 5
+  position_mode: 7
+
+  scale_pos_to_dev: 1.0
+  scale_pos_from_dev: 1.0
+  scale_vel_to_dev: 4369.066666666667
+  scale_vel_from_dev: 0.0002288818359375
+  scale_eff_from_dev: 0.001
+
+  heartbeat_producer: 1000
+  heartbeat_multiplier: 10.0
+
+  sdo:
+    - { index: 0x60C2, sub_index: 1, value: 20 }
+    - { index: 0x60C2, sub_index: 2, value: -3 }
+    - { index: 0x6060, sub_index: 0, value: 7 }
+    - { index: 0x6098, sub_index: 0, value: 35 }
+    - { index: 0x607C, sub_index: 0, value: 0 }
+
+  tpdo:
+    1:
+      enabled: true
+      cob_id: "auto"
+      transmission: 5
+      inhibit_time: 0
+      mapping:
+        - { index: 0x6041, sub_index: 0 }
+        - { index: 0x6061, sub_index: 0 }
+
+    2:
+      enabled: true
+      cob_id: "auto"
+      transmission: 0x01
+      mapping:
+        - { index: 0x6064, sub_index: 0 }
+        - { index: 0x606C, sub_index: 0 }
+
+    3:
+      enabled: true
+      cob_id: "auto"
+      transmission: 0x01
+      mapping:
+        - { index: 0x6077, sub_index: 0 }
+
+    4:
+      enabled: false
+
+  rpdo:
+    1:
+      enabled: true
+      cob_id: "auto"
+      transmission: 0x01
+      mapping:
+        - { index: 0x6040, sub_index: 0 }
+        - { index: 0x6060, sub_index: 0 }
+
+    2:
+      enabled: true
+      cob_id: "auto"
+      transmission: 0x01
+      mapping:
+        - { index: 0x60C1, sub_index: 1 }
+
+    3:
+      enabled: false
+
+    4:
+      enabled: false
+
+joint_5:
+  node_id: 5
+  dcf: "servo_drive.eds"
+  package: "canopen_402_driver"
+  driver: "ros2_canopen::Cia402Driver"
+  boot: true
+  mandatory: true
+  polling: true
+  period: 20
+  non_transmit_timeout: 20000
+  sdo_timeout_ms: 5000
+  boot_timeout_ms: 60000
+  switching_state: 5
+  position_mode: 7
+
+  scale_pos_to_dev: 1.0
+  scale_pos_from_dev: 1.0
+  scale_vel_to_dev: 4369.066666666667
+  scale_vel_from_dev: 0.0002288818359375
+  scale_eff_from_dev: 0.001
+
+  heartbeat_producer: 1000
+  heartbeat_multiplier: 10.0
+
+  sdo:
+    - { index: 0x60C2, sub_index: 1, value: 20 }
+    - { index: 0x60C2, sub_index: 2, value: -3 }
+    - { index: 0x6060, sub_index: 0, value: 7 }
+    - { index: 0x6098, sub_index: 0, value: 35 }
+    - { index: 0x607C, sub_index: 0, value: 0 }
+
+  tpdo:
+    1:
+      enabled: true
+      cob_id: "auto"
+      transmission: 5
+      inhibit_time: 0
+      mapping:
+        - { index: 0x6041, sub_index: 0 }
+        - { index: 0x6061, sub_index: 0 }
+
+    2:
+      enabled: true
+      cob_id: "auto"
+      transmission: 0x01
+      mapping:
+        - { index: 0x6064, sub_index: 0 }
+        - { index: 0x606C, sub_index: 0 }
+
+    3:
+      enabled: true
+      cob_id: "auto"
+      transmission: 0x01
+      mapping:
+        - { index: 0x6077, sub_index: 0 }
+
+    4:
+      enabled: false
+
+  rpdo:
+    1:
+      enabled: true
+      cob_id: "auto"
+      transmission: 0x01
+      mapping:
+        - { index: 0x6040, sub_index: 0 }
+        - { index: 0x6060, sub_index: 0 }
+
+    2:
+      enabled: true
+      cob_id: "auto"
+      transmission: 0x01
+      mapping:
+        - { index: 0x60C1, sub_index: 1 }
+
+    3:
+      enabled: false
+
+    4:
+      enabled: false
+
+joint_6:
+  node_id: 6
+  dcf: "servo_drive.eds"
+  package: "canopen_402_driver"
+  driver: "ros2_canopen::Cia402Driver"
+  boot: true
+  mandatory: true
+  polling: true
+  period: 20
+  non_transmit_timeout: 20000
+  sdo_timeout_ms: 5000
+  boot_timeout_ms: 60000
+  switching_state: 5
+  position_mode: 7
+
+  scale_pos_to_dev: 1.0
+  scale_pos_from_dev: 1.0
+  scale_vel_to_dev: 4369.066666666667
+  scale_vel_from_dev: 0.0002288818359375
+  scale_eff_from_dev: 0.001
+
+  heartbeat_producer: 1000
+  heartbeat_multiplier: 10.0
+
+  sdo:
+    - { index: 0x60C2, sub_index: 1, value: 20 }
+    - { index: 0x60C2, sub_index: 2, value: -3 }
+    - { index: 0x6060, sub_index: 0, value: 7 }
+    - { index: 0x6098, sub_index: 0, value: 35 }
+    - { index: 0x607C, sub_index: 0, value: 0 }
+
+  tpdo:
+    1:
+      enabled: true
+      cob_id: "auto"
+      transmission: 5
+      inhibit_time: 0
+      mapping:
+        - { index: 0x6041, sub_index: 0 }
+        - { index: 0x6061, sub_index: 0 }
+
+    2:
+      enabled: true
+      cob_id: "auto"
+      transmission: 0x01
+      mapping:
+        - { index: 0x6064, sub_index: 0 }
+        - { index: 0x606C, sub_index: 0 }
+
+    3:
+      enabled: true
+      cob_id: "auto"
+      transmission: 0x01
+      mapping:
+        - { index: 0x6077, sub_index: 0 }
+
+    4:
+      enabled: false
+
+  rpdo:
+    1:
+      enabled: true
+      cob_id: "auto"
+      transmission: 0x01
+      mapping:
+        - { index: 0x6040, sub_index: 0 }
+        - { index: 0x6060, sub_index: 0 }
+
+    2:
+      enabled: true
+      cob_id: "auto"
+      transmission: 0x01
+      mapping:
+        - { index: 0x60C1, sub_index: 1 }
+
+    3:
+      enabled: false
+
+    4:
+      enabled: false
+
+joint_7:
+  node_id: 7
+  dcf: "servo_drive.eds"
+  package: "canopen_402_driver"
+  driver: "ros2_canopen::Cia402Driver"
+  boot: true
+  mandatory: true
+  polling: true
+  period: 20
+  non_transmit_timeout: 20000
+  sdo_timeout_ms: 5000
+  boot_timeout_ms: 60000
+  switching_state: 5
+  position_mode: 7
+
+  scale_pos_to_dev: 1.0
+  scale_pos_from_dev: 1.0
+  scale_vel_to_dev: 4369.066666666667
+  scale_vel_from_dev: 0.0002288818359375
+  scale_eff_from_dev: 0.001
+
+  heartbeat_producer: 1000
+  heartbeat_multiplier: 10.0
+
+  sdo:
+    - { index: 0x60C2, sub_index: 1, value: 20 }
+    - { index: 0x60C2, sub_index: 2, value: -3 }
+    - { index: 0x6060, sub_index: 0, value: 7 }
+    - { index: 0x6098, sub_index: 0, value: 35 }
+    - { index: 0x607C, sub_index: 0, value: 0 }
+
+  tpdo:
+    1:
+      enabled: true
+      cob_id: "auto"
+      transmission: 5
+      inhibit_time: 0
+      mapping:
+        - { index: 0x6041, sub_index: 0 }
+        - { index: 0x6061, sub_index: 0 }
+
+    2:
+      enabled: true
+      cob_id: "auto"
+      transmission: 0x01
+      mapping:
+        - { index: 0x6064, sub_index: 0 }
+        - { index: 0x606C, sub_index: 0 }
+
+    3:
+      enabled: true
+      cob_id: "auto"
+      transmission: 0x01
+      mapping:
+        - { index: 0x6077, sub_index: 0 }
+
+    4:
+      enabled: false
+
+  rpdo:
+    1:
+      enabled: true
+      cob_id: "auto"
+      transmission: 0x01
+      mapping:
+        - { index: 0x6040, sub_index: 0 }
+        - { index: 0x6060, sub_index: 0 }
+
+    2:
+      enabled: true
+      cob_id: "auto"
+      transmission: 0x01
+      mapping:
+        - { index: 0x60C1, sub_index: 1 }
+
+    3:
+      enabled: false
+
+    4:
+      enabled: false
+
+joint_8:
+  node_id: 8
+  dcf: "servo_drive.eds"
+  package: "canopen_402_driver"
+  driver: "ros2_canopen::Cia402Driver"
+  boot: true
+  mandatory: true
+  polling: true
+  period: 20
+  non_transmit_timeout: 20000
+  sdo_timeout_ms: 5000
+  boot_timeout_ms: 60000
+  switching_state: 5
+  position_mode: 7
+
+  scale_pos_to_dev: 1.0
+  scale_pos_from_dev: 1.0
+  scale_vel_to_dev: 4369.066666666667
+  scale_vel_from_dev: 0.0002288818359375
+  scale_eff_from_dev: 0.001
+
+  heartbeat_producer: 1000
+  heartbeat_multiplier: 10.0
+
+  sdo:
+    - { index: 0x60C2, sub_index: 1, value: 20 }
+    - { index: 0x60C2, sub_index: 2, value: -3 }
+    - { index: 0x6060, sub_index: 0, value: 7 }
+    - { index: 0x6098, sub_index: 0, value: 35 }
+    - { index: 0x607C, sub_index: 0, value: 0 }
+
+  tpdo:
+    1:
+      enabled: true
+      cob_id: "auto"
+      transmission: 5
+      inhibit_time: 0
+      mapping:
+        - { index: 0x6041, sub_index: 0 }
+        - { index: 0x6061, sub_index: 0 }
+
+    2:
+      enabled: true
+      cob_id: "auto"
+      transmission: 0x01
+      mapping:
+        - { index: 0x6064, sub_index: 0 }
+        - { index: 0x606C, sub_index: 0 }
+
+    3:
+      enabled: true
+      cob_id: "auto"
+      transmission: 0x01
+      mapping:
+        - { index: 0x6077, sub_index: 0 }
+
+    4:
+      enabled: false
+
+  rpdo:
+    1:
+      enabled: true
+      cob_id: "auto"
+      transmission: 0x01
+      mapping:
+        - { index: 0x6040, sub_index: 0 }
+        - { index: 0x6060, sub_index: 0 }
+
+    2:
+      enabled: true
+      cob_id: "auto"
+      transmission: 0x01
+      mapping:
+        - { index: 0x60C1, sub_index: 1 }
+
+    3:
+      enabled: false
+
+    4:
+      enabled: false
+
